@@ -1,1 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVEST MONEY - Products</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>INVEST MONEY</h2>
+                <p>Investment Platform</p>
+            </div>
+            
+            <div class="sidebar-menu">
+                <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="deposit.html"><i class="fas fa-wallet"></i> Deposit</a>
+                <a href="withdraw.html"><i class="fas fa-money-bill-wave"></i> Withdraw</a>
+                <a href="products.html" class="active"><i class="fas fa-box-open"></i> Investment Products</a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="user-profile">
+                    <span id="usernameDisplay"></span>
+                    <div class="avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="page-header">
+                    <h1>Investment Products</h1>
+                    <p>Choose the best investment plan for your goals</p>
+                </div>
+                
+                <div class="products-container">
+                    <div class="product-card">
+                        <div class="product-header beginner">
+                            <h3>BEGINNER</h3>
+                            <div class="product-price">Rp 150,000</div>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Daily profit: Rp 70,000</li>
+                                <li><i class="fas fa-check"></i> Duration: 15 days</li>
+                                <li><i class="fas fa-check"></i> Total return: Rp 1,050,000</li>
+                                <li><i class="fas fa-check"></i> ROI: 600%</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <button class="btn-primary invest-btn" data-product="beginner">Invest Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-header intermediate">
+                            <h3>INTERMEDIATE</h3>
+                            <div class="product-price">Rp 250,000</div>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Daily profit: Rp 150,000</li>
+                                <li><i class="fas fa-check"></i> Duration: 20 days</li>
+                                <li><i class="fas fa-check"></i> Total return: Rp 3,000,000</li>
+                                <li><i class="fas fa-check"></i> ROI: 1100%</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <button class="btn-primary invest-btn" data-product="intermediate">Invest Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-header advanced">
+                            <h3>ADVANCED</h3>
+                            <div class="product-price">Rp 350,000</div>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Daily profit: Rp 200,000</li>
+                                <li><i class="fas fa-check"></i> Duration: 30 days</li>
+                                <li><i class="fas fa-check"></i> Total return: Rp 6,000,000</li>
+                                <li><i class="fas fa-check"></i> ROI: 1600%</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <button class="btn-primary invest-btn" data-product="advanced">Invest Now</button>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-header expert">
+                            <h3>EXPERT</h3>
+                            <div class="product-price">Rp 500,000</div>
+                        </div>
+                        <div class="product-body">
+                            <ul class="product-features">
+                                <li><i class="fas fa-check"></i> Daily profit: Rp 300,000</li>
+                                <li><i class="fas fa-check"></i> Duration: 35 days</li>
+                                <li><i class="fas fa-check"></i> Total return: Rp 10,500,000</li>
+                                <li><i class="fas fa-check"></i> ROI: 2000%</li>
+                            </ul>
+                        </div>
+                        <div class="product-footer">
+                            <button class="btn-primary invest-btn" data-product="expert">Invest Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="investment-modal" id="investmentModal" style="display: none;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 id="modalProductName">Confirm Investment</h3>
+                            <button class="close-modal">&times;</button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="investment-details">
+                                <p>You are about to invest in:</p>
+                                <h4 id="modalProductTitle">Product Name</h4>
+                                <div class="detail-row">
+                                    <span>Price:</span>
+                                    <span id="modalProductPrice">Rp 0</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>Daily Profit:</span>
+                                    <span id="modalDailyProfit">Rp 0</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>Duration:</span>
+                                    <span id="modalDuration">0 days</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span>Total Return:</span>
+                                    <span id="modalTotalReturn">Rp 0</span>
+                                </div>
+                                
+                                <div class="current-balance">
+                                    <p>Your current balance:</p>
+                                    <div class="amount" id="modalCurrentBalance">Rp 0</div>
+                                </div>
+                            </div>
+                            
+                            <div class="confirmation">
+                                <p>By clicking "Confirm Investment", you agree to our terms and conditions.</p>
+                                <div class="form-group">
+                                    <input type="checkbox" id="agreeTerms" required>
+                                    <label for="agreeTerms">I agree to the terms and conditions</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn-outline close-modal">Cancel</button>
+                            <button class="btn-primary" id="confirmInvestment">Confirm Investment</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>
