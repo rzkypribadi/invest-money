@@ -1,1 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVEST MONEY - Withdraw</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>INVEST MONEY</h2>
+                <p>Investment Platform</p>
+            </div>
+            
+            <div class="sidebar-menu">
+                <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="deposit.html"><i class="fas fa-wallet"></i> Deposit</a>
+                <a href="withdraw.html" class="active"><i class="fas fa-money-bill-wave"></i> Withdraw</a>
+                <a href="products.html"><i class="fas fa-box-open"></i> Investment Products</a>
+                <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search...">
+                </div>
+                <div class="user-profile">
+                    <span id="usernameDisplay"></span>
+                    <div class="avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="page-header">
+                    <h1>Withdraw Funds</h1>
+                    <p>Transfer funds to your bank or e-wallet</p>
+                </div>
+                
+                <div class="withdraw-container">
+                    <div class="balance-info">
+                        <h3>Available Balance</h3>
+                        <div class="amount" id="withdrawBalance">Rp 0</div>
+                        <p>Minimum withdrawal: Rp 700,000</p>
+                    </div>
+                    
+                    <div class="withdraw-form">
+                        <form id="withdrawForm">
+                            <div class="form-group">
+                                <label>Withdrawal Method</label>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="withdrawMethod" value="bank" checked>
+                                        <span>Bank Transfer</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="withdrawMethod" value="ewallet">
+                                        <span>E-Wallet</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group" id="bankSelection">
+                                <label for="bankName">Select Bank</label>
+                                <select id="bankName" required>
+                                    <option value="">Select Bank</option>
+                                    <option value="bca">BCA</option>
+                                    <option value="bni">BNI</option>
+                                    <option value="bri">BRI</option>
+                                    <option value="mandiri">Mandiri</option>
+                                    <option value="cimb">CIMB</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" id="ewalletSelection" style="display: none;">
+                                <label for="ewalletName">Select E-Wallet</label>
+                                <select id="ewalletName">
+                                    <option value="">Select E-Wallet</option>
+                                    <option value="dana">DANA</option>
+                                    <option value="gopay">GoPay</option>
+                                    <option value="ovo">OVO</option>
+                                    <option value="linkaja">LinkAja</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="accountNumber">Account Number / E-Wallet Number</label>
+                                <input type="text" id="accountNumber" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="accountName">Account Name</label>
+                                <input type="text" id="accountName" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="withdrawAmount">Amount (Rp)</label>
+                                <input type="number" id="withdrawAmount" min="700000" required>
+                                <p class="hint">Minimum Rp 700,000</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="withdrawPassword">Password</label>
+                                <input type="password" id="withdrawPassword" required>
+                            </div>
+                            
+                            <button type="submit" class="btn-primary" id="submitWithdrawal">Request Withdrawal</button>
+                        </form>
+                    </div>
+                    
+                    <div class="withdraw-info">
+                        <div class="info-box">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Withdrawal processing time is 1x24 hours. Please ensure your account details are correct.</p>
+                        </div>
+                        
+                        <div class="recent-withdrawals">
+                            <h4>Recent Withdrawals</h4>
+                            <div class="withdrawals-list" id="withdrawalsList">
+                                <!-- Withdrawals will be populated here -->
+                                <div class="empty-state">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <p>No recent withdrawals</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/withdraw.js"></script>
+</body>
+</html>
