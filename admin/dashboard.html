@@ -1,1 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVEST MONEY - Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.css">
+</head>
+<body>
+    <div class="dashboard-container admin-dashboard">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h2>INVEST MONEY</h2>
+                <p>Admin Panel</p>
+            </div>
+            
+            <div class="sidebar-menu">
+                <a href="dashboard.html" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                <a href="users.html"><i class="fas fa-users"></i> Users</a>
+                <a href="transactions.html"><i class="fas fa-exchange-alt"></i> Transactions</a>
+                <a href="investments.html"><i class="fas fa-chart-line"></i> Investments</a>
+                <a href="withdrawals.html"><i class="fas fa-money-bill-wave"></i> Withdrawals</a>
+                <a href="#" id="adminLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="top-bar">
+                <div class="admin-info">
+                    <span>Welcome, Admin</span>
+                    <div class="avatar">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="page-header">
+                    <h1>Admin Dashboard</h1>
+                    <p>Overview of platform statistics</p>
+                </div>
+                
+                <div class="stats-cards">
+                    <div class="card">
+                        <h3>Total Users</h3>
+                        <div class="amount" id="totalUsers">0</div>
+                        <div class="card-footer">
+                            <span><i class="fas fa-arrow-up"></i> <span id="userGrowth">0</span>% this month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Active Investments</h3>
+                        <div class="amount" id="totalInvestments">0</div>
+                        <div class="card-footer">
+                            <span><i class="fas fa-chart-line"></i> <span id="investmentGrowth">0</span>% this month</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Today's Profit</h3>
+                        <div class="amount" id="todayProfit">Rp 0</div>
+                        <div class="card-footer">
+                            <span><i class="fas fa-calendar-day"></i> <span id="profitChange">0</span>% from yesterday</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Pending Withdrawals</h3>
+                        <div class="amount" id="pendingWithdrawals">0</div>
+                        <div class="card-footer">
+                            <span><i class="fas fa-clock"></i> Need approval</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="charts-row">
+                    <div class="chart-container">
+                        <h3>User Growth</h3>
+                        <canvas id="userGrowthChart"></canvas>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <h3>Revenue</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="recent-activity">
+                    <div class="section-header">
+                        <h2>Recent Activity</h2>
+                    </div>
+                    
+                    <div class="activity-list" id="activityList">
+                        <!-- Activities will be populated here -->
+                        <div class="empty-state">
+                            <i class="fas fa-clock"></i>
+                            <p>No recent activity</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quick-actions">
+                    <div class="section-header">
+                        <h2>Quick Actions</h2>
+                    </div>
+                    
+                    <div class="actions-grid">
+                        <a href="users.html" class="action-card">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Add New User</span>
+                        </a>
+                        
+                        <a href="withdrawals.html" class="action-card">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Approve Withdrawals</span>
+                        </a>
+                        
+                        <a href="#" class="action-card">
+                            <i class="fas fa-bullhorn"></i>
+                            <span>Send Notification</span>
+                        </a>
+                        
+                        <a href="#" class="action-card">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+    <script src="../js/firebase-config.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>
